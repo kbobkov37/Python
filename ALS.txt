@@ -1,0 +1,86 @@
+﻿!Current Configuration:
+!
+!System Description "ALS-24110P - 4 FE PoE, 1 FE copper, 4 GE fiber, 1.0.0.27, Linux 2.6.19 #221 PREEMPT Fri Dec 4 10:26:13 MSK 2015"
+!System Software Version "1.0.0.27"
+!
+set prompt "IVA-UCN-TEST-Alsitec"
+network parms 10.218.90.4 255.255.255.240 10.218.90.1
+network mgmt_vlan 2800
+ip web server enable
+vlan database
+vlan 2800,3968
+vlan name 2800 "UCN_MNG"
+vlan name 3968 "WIFI_2980"
+exit
+configure
+spanning-tree configuration name "00-13-AA-1B-0F-48"
+logging syslog
+logging syslog facility local3
+logging host 10.218.64.36 ipv4 514 warning
+set igmp mvr 1
+ip dhcp snooping
+cos-queue strict 0 1 2 3 4 5 6 7
+snmp-server community SHDkabLcg85V
+snmp-server community rw wgOYIoJyNO
+interface 0/1
+vlan pvid 2800
+vlan participation include 2800,3968
+vlan tagging 3968
+exit
+interface 0/2
+vlan pvid 2800
+vlan participation include 2800,3968
+vlan tagging 3968
+exit
+interface 0/3
+vlan pvid 2800
+vlan participation include 2800,3968
+vlan tagging 3968
+exit
+interface 0/4
+vlan pvid 2800
+vlan participation include 2800,3968
+vlan tagging 3968
+exit
+interface 0/6
+vlan participation include 2800,3968
+vlan tagging 2800,3968
+ip dhcp snooping trust
+lldp transmit
+lldp transmit-mgmt
+lldp receive
+lldp transmit-tlv port-desc sys-name sys-desc sys-cap
+lldp notification
+exit
+interface 0/7
+vlan participation include 2800,3968
+vlan tagging 2800,3968
+ip dhcp snooping trust
+lldp transmit
+lldp transmit-mgmt
+lldp receive
+lldp transmit-tlv port-desc sys-name sys-desc sys-cap
+lldp notification
+exit
+interface 0/8
+vlan participation include 2800,3968
+vlan tagging 2800,3968
+ip dhcp snooping trust
+lldp transmit
+lldp transmit-mgmt
+lldp receive
+lldp transmit-tlv port-desc sys-name sys-desc sys-cap
+lldp notification
+exit
+interface 0/9
+vlan participation include 2800,3968
+vlan tagging 2800,3968
+ip dhcp snooping trust
+lldp transmit
+lldp transmit-mgmt
+lldp receive
+lldp transmit-tlv port-desc sys-name sys-desc sys-cap
+lldp notification
+exit
+exit
+
